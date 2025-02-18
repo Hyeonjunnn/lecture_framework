@@ -3,3 +3,4 @@ server:
 logging:
   level:
     '[org.springframework.web]': debug
+    '[org.mybatis]': debug
