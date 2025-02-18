@@ -40,7 +40,7 @@
 		</dependency>
 
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <scope>runtime</scope>
@@ -55,7 +55,7 @@
             <artifactId>mybatis-spring-boot-starter-test</artifactId>
             <version>3.0.4</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
 
 		<dependency>
@@ -67,6 +67,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+            <version>1.18.36</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -86,6 +87,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+                            <version>1.18.36</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
