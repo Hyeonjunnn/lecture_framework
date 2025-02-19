@@ -21,4 +21,10 @@ import java.util.List;
  */
 public interface StudentService {
     public List<Student> getStudentsByDeptNo(String deptNo);
+
+    public Student getStudentByNo(String sno);
+
+    public int save(Student student);
+
+    public int delete(String sno);
 }

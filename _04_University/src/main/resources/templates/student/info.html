@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/baseLayout :: baseLayout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>학생 상세 조회</title>
+</head>
+<body>
+	<main>
+		<h3>학생 상세 조회</h3>
+		
+		<form th:object="${student}" th:action="@{/student/update}" method="post">
+			<label for="no">학번 : </label>
+<!--			<input type="text" name="no" id="no" readonly th:value="${student.no}"><br/><br/>-->
+<!--			<input type="text" name="no" id="no" readonly th:value="*{no}"><br/><br/>-->
+			<input type="text" readonly th:field="*{no}" style="background-color: darkgray;"/>
+			
+			<br/><br/>
+			
+			<label for="deptNo">학과 : </label>
+			<!--<select name="deptNo" id="deptNo">-->
+			<select th:field="*{deptNo}">
+				<!--
+				<option th:each="department : ${departments}"
+				        th:text="${department.name}"
+				        th:value="${department.no}"
+				        th:selected="${student.deptNo eq department.no}">
+				</option>
+				-->
+				<option th:each="department : ${departments}"
+				        th:text="${department.name}"
+				        th:value="${department.no}">
+				</option>
+			</select>
+			
+			<br><br>
+			
+			<label for="name">이름 : </label>
+			<input type="text" th:field="*{name}">
+			
+			<br><br>
+			
+			<label for="address">주소 : </label>
+			<input type="text" th:field="*{address}" size="50">
+			
+			<br><br>
+			
+			<label>휴학 여부 : </label>
+			<select th:field="*{absenceYn}">
+				<option value="N">재학중</option>
+				<option value="Y">휴학중</option>
+			</select>
+			
+			<br/><br/>
+			
+			<input type="submit" value="수정" style="background-color: yellow;"/>
+			<input type="button" value="삭제" onclick="deleteStudent();" style="background-color: red;"/>
+			
+		</form>
+		
+		<form id="studentDeleteForm" th:action="@{/student/delete}" method="post">
+			<input type="hidden" name="sno" th:value="${student.no}">
+		</form>
+		
+		<script language="JavaScript">
+			function deleteStudent() {
+				if (confirm("정말로 삭제하시겠습니까?")) {
+					const deleteForm = document.getElementById('studentDeleteForm');
+					
+					deleteForm.submit();
+				}
+			}
+		</script>
+	</main>
+</body>
+</html>

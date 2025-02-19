@@ -1,5 +1,6 @@
 package com.beyond.university.department.model.service;
 
+import com.beyond.university.department.model.dto.DepartmentsDto;
 import com.beyond.university.department.model.mapper.DepartmentMapper;
 import com.beyond.university.department.model.vo.Department;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentMapper departmentMapper;
 
     @Override
-    public List<Department> getDepartments() {
+    public List<DepartmentsDto> getDepartments() {
 
         return departmentMapper.selectAll();
     }
