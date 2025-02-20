@@ -22,5 +22,7 @@ import java.util.List;
  */
 public interface DepartmentService {
 
-    List<DepartmentsDto> getDepartments();
+    List<Department> getDepartments();
+
+    Department getDepartmentByNo(String deptNo);
 }

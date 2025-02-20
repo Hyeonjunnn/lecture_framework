@@ -1,6 +1,6 @@
 package com.beyond.university.student.model.service;
 
-import com.beyond.university.student.mapper.StudentMapper;
+import com.beyond.university.student.model.mapper.StudentMapper;
 import com.beyond.university.student.model.vo.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -31,8 +31,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentMapper departmentMapper;
 
     @Override
-    public List<DepartmentsDto> getDepartments() {
+    public List<Department> getDepartments() {
 
         return departmentMapper.selectAll();
+    }
+
+    @Override
+    public Department getDepartmentByNo(String deptNo) {
+
+        return departmentMapper.selectDepartmentByNo(deptNo);
     }
 }

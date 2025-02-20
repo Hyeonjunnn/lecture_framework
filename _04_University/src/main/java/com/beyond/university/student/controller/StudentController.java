@@ -2,9 +2,9 @@ package com.beyond.university.student.controller;
 
 import com.beyond.university.department.model.dto.DepartmentsDto;
 import com.beyond.university.department.model.service.DepartmentService;
-import com.beyond.university.student.dto.StudentRegisterRequestDto;
-import com.beyond.university.student.dto.StudentUpdateRequestDto;
-import com.beyond.university.student.dto.StudentsDto;
+import com.beyond.university.student.model.dto.StudentRegisterRequestDto;
+import com.beyond.university.student.model.dto.StudentUpdateRequestDto;
+import com.beyond.university.student.model.dto.StudentsDto;
 import com.beyond.university.student.model.service.StudentService;
 import com.beyond.university.student.model.vo.Student;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,12 @@ public class StudentController {
     public ModelAndView search(ModelAndView modelAndView,
                                @RequestParam(required = false) String deptNo) {
 
-        List<DepartmentsDto> departments = departmentService.getDepartments();
+        List<DepartmentsDto> departments =
+                departmentService.getDepartments()
+                        .stream()
+                        .map(DepartmentsDto::new)
+                        .toList();
+
 
         log.info("departments.size() : {}", departments.size());
 
@@ -55,10 +60,16 @@ public class StudentController {
     @GetMapping("/info")
     public ModelAndView info(ModelAndView modelAndView,
                              @RequestParam(required = true) String sno) {
-
         Student student = studentService.getStudentByNo(sno);
+        List<DepartmentsDto> departments =
+                departmentService.getDepartments()
+                        .stream()
+                        .map(DepartmentsDto::new)
+                        .toList();
 
-        List<DepartmentsDto> departments = departmentService.getDepartments();
+        // System.out.println(student);
+        // System.out.println(student.getDepartment());
+        System.out.println(departmentService.getDepartmentByNo(student.getDeptNo()));
 
         modelAndView.addObject("student", student);
         modelAndView.addObject("departments", departments);
@@ -70,7 +81,11 @@ public class StudentController {
     @GetMapping("/register")
     public ModelAndView register(ModelAndView modelAndView) {
 
-        List<DepartmentsDto> departments = departmentService.getDepartments();
+        List<DepartmentsDto> departments =
+                departmentService.getDepartments()
+                        .stream()
+                        .map(DepartmentsDto::new)
+                        .toList();
 
         modelAndView.addObject("departments", departments);
         modelAndView.setViewName("student/register");

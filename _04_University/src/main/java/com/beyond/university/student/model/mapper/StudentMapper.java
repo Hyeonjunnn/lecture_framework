@@ -1,6 +1,5 @@
-package com.beyond.university.student.mapper;
+package com.beyond.university.student.model.mapper;
 
-import com.beyond.university.student.dto.StudentRegisterRequestDto;
 import com.beyond.university.student.model.vo.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

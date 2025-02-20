@@ -1,4 +1,4 @@
-package com.beyond.university.student.dto;
+package com.beyond.university.student.model.dto;
 
 import com.beyond.university.student.model.vo.Student;
 import lombok.Getter;
