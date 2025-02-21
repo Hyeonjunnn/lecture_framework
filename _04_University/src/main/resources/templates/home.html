@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html th:replace="~{layout/baseLayout :: baseLayout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{layout/baseLayout :: baseLayout(~{::title}, ~{::main})}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<title>스프링 부트 웹</title>
@@ -26,6 +28,18 @@
 	<h3>2. 학생 등록</h3>
 	
 	<a th:href="@{/student/register}">View Details</a>
+	
+	<h3>3. 사용자 별 페이지</h3>
+	
+	<!-- 인증된 사용자가 로그인하면 링크가 보인다. -->
+<!--	<a th:href="@{/user/info}" sec:authorize="!hasRole('ADMIN')">사용자 페이지</a>-->
+	<a th:href="@{/user/info}" sec:authorize-url="/user/info">사용자 페이지</a>
+	
+	<br/>
+	
+	<!-- 관리자가 로그인하면 링크가 보인다 -->
+	<!--	<a th:href="@{/admin/info}" sec:authorize="hasRole('ADMIN')">관리자 페이지</a>-->
+	<a th:href="@{/admin/info}" sec:authorize-url="/admin/info">관리자 페이지</a>
 </main>
 </body>
 </html>
