@@ -3,9 +3,13 @@
 <body>
 	<header th:fragment="header">
 		<h2><a th:href="@{/}" style="color: red; text-decoration: none;" >스프링 부트 웹</a></h2>
+		<form th:action="@{/logout}" method="post">
+			<input type="button" value="내정보">
+			<input type="submit" value="로그아웃">
+		</form>
 	</header>
 
-	<footer  th:fragment="footer">
+	<footer th:fragment="footer">
 		<p>CopyRight@HONG hong123@beyond.com</p>
 	</footer>
 </body>
