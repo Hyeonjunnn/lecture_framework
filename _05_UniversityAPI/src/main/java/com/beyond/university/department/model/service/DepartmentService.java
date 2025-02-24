@@ -22,5 +22,11 @@ import java.util.Optional;
  */
 public interface DepartmentService {
 
-    List<Department> getDepartments();
+    int getTotalCount(String openYn);
+
+    List<Department> getDepartments(int page, int numOfRows, String openYn);
+
+    Optional<Department> getDepartmentByNo(String deptNo);
+
+    void save(Department department);
 }
