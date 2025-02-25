@@ -90,6 +90,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    @Transactional
     public void delete(String deptNo) {
 
         departmentMapper.deleteDepartment(deptNo);

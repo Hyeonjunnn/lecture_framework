@@ -275,20 +275,25 @@ public class DepartmentController {
                     content = @Content(mediaType = "application/json")
             ),
     })
-    public ResponseEntity<BaseResponseDto<Subject>> getSubjectsByDeptNo(
+    public ResponseEntity<ItemsResponseDto<Subject>> getSubjectsByDeptNo(
             @RequestParam int page,
             @RequestParam int numOfRows,
             @PathVariable("department-no") String deptNo) {
 
+        /*
         Department department =
                 departmentService.getDepartmentByNo(deptNo)
                         .orElseThrow(() -> new UniversityException(ExceptionMessage.DEPARTMENT_NOT_FOUND));
-
-        List<Subject> subjects = subjectService.getSubjectsByDeptNo(page, numOfRows, deptNo);
+        */
         int totalCount = subjectService.getTotalCountByDeptNo(deptNo);
+        List<Subject> subjects = subjectService.getSubjectsByDeptNo(page, numOfRows, deptNo);
 
-        return ResponseEntity.ok(
-                new ItemsResponseDto<>(HttpStatus.OK, subjects, page, totalCount)
-        );
+        if (!subjects.isEmpty()) {
+            return ResponseEntity.ok(
+                    new ItemsResponseDto<>(HttpStatus.OK, subjects, page, totalCount)
+            );
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 }
