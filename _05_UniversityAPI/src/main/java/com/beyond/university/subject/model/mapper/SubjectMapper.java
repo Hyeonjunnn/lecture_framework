@@ -1,13 +1,11 @@
-package com.beyond.university.department.model.mapper;
+package com.beyond.university.subject.model.mapper;
 
-import com.beyond.university.department.model.vo.Department;
 import com.beyond.university.subject.model.vo.Subject;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * <p>
@@ -26,19 +24,9 @@ import java.util.Optional;
  */
 
 @Mapper
-public interface DepartmentMapper {
+public interface SubjectMapper {
 
-    int selectDepartmentsCount(@Param("openYn") String openYn);
+    int selectSubjectsCountByDeptNo(@Param("deptNo") String deptNo);
 
-    List<Department> selectAll(@Param("openYn") String openYn, RowBounds rowBounds);
-
-    Optional<Department> selectDepartmentByNo(@Param("deptNo") String deptNo);
-
-    void insertDepartment(Department department);
-
-    void updateDepartment(Department department);
-
-    void deleteDepartment(String deptNo);
-
-    List<Subject> getSubjectsByDeptNo(String deptNo);
+    List<Subject> selectSubjectsByDeptNo(@Param("deptNo") String deptNo, RowBounds rowBounds);
 }

@@ -1,9 +1,8 @@
-package com.beyond.university.department.model.service;
+package com.beyond.university.subject.model.service;
 
-import com.beyond.university.department.model.vo.Department;
+import com.beyond.university.subject.model.vo.Subject;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * <p>
@@ -20,15 +19,9 @@ import java.util.Optional;
  * -----------------------------------------------------------
  * 2025-02-21        hjsong             최초 생성
  */
-public interface DepartmentService {
+public interface SubjectService {
 
-    int getTotalCount(String openYn);
+    int getTotalCountByDeptNo(String depNo);
 
-    List<Department> getDepartments(int page, int numOfRows, String openYn);
-
-    Optional<Department> getDepartmentByNo(String deptNo);
-
-    void save(Department department);
-
-    void delete(String deptNo);
+    List<Subject> getSubjectsByDeptNo(int page, int numOfRows, String deptNo);
 }

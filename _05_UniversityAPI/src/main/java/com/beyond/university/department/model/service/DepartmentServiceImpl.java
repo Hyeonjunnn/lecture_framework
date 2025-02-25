@@ -81,11 +81,18 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void save(Department department) {
         if (department.getNo() != null) {
             //update
+            departmentMapper.updateDepartment(department);
         } else {
             // insert
             departmentMapper.insertDepartment(department);
         }
 
+    }
+
+    @Override
+    public void delete(String deptNo) {
+
+        departmentMapper.deleteDepartment(deptNo);
     }
 
 }
