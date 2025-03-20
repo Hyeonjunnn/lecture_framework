@@ -1,6 +1,7 @@
 package com.beyond.university.auth.jwt;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -140,12 +141,18 @@ public class JwtTokenProvider {
 
     private Claims getClaims(String token) {
 
-        return Jwts
-                .parser()
-                .verifyWith(secretKey)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        // 토큰이 만료되면 parseSignedClaims() 단계에서
+        // ExpiredJwtException이 발생한다.
+        try {
+            return Jwts
+                    .parser()
+                    .verifyWith(secretKey)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (ExpiredJwtException e) {
+            return e.getClaims();
+        }
     }
 
     // 리플레시 토큰 삭제
