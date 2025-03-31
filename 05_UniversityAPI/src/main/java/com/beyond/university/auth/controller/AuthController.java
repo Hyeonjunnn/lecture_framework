@@ -35,7 +35,7 @@ public class AuthController {
                     content = @Content(mediaType = "application/json")
             ),
             @ApiResponse(
-                    responseCode = "401",
+                    responseCode = "400",
                     description = "UNAUTHORIZED",
                     content = @Content(mediaType = "application/json")
             ),
